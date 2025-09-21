@@ -81,29 +81,29 @@ void GameRenderer::renderGame( const Game& game ) const
 
 void GameRenderer::handleEvent( ViewEvent event )
 {
-    float mHelpCameraX, mHelpCameraY;
+    float mHelpPosX, mHelpPosY;
     int oldWindowWindth = m_windowWidth, oldWindowHeight = m_windowHeight;
     
     switch ( event.action )
     {
     case ViewAction::CELL_SIZE_DECREASE:
-        mHelpCameraX = float(m_cameraX) / m_cellSize;
-        mHelpCameraY = float(m_cameraY) / m_cellSize;
+        mHelpPosX = float(m_cameraX + event.mouseX) / m_cellSize;
+        mHelpPosY = float(m_cameraY + event.mouseY) / m_cellSize;
         --m_cellSize;
         if ( m_cellSize < MIN_CELL_SIZE )
             m_cellSize = MIN_CELL_SIZE;
-        m_cameraX = int(mHelpCameraX * m_cellSize);
-        m_cameraY = int(mHelpCameraY * m_cellSize);
+        m_cameraX = (int)round(mHelpPosX * m_cellSize - event.mouseX);
+        m_cameraY = (int)round(mHelpPosY * m_cellSize - event.mouseY);
         break;
     
     case ViewAction::CELL_SIZE_INCREASE:
-        mHelpCameraX = float(m_cameraX) / m_cellSize;
-        mHelpCameraY = float(m_cameraY) / m_cellSize;
+        mHelpPosX = float(m_cameraX + event.mouseX) / m_cellSize;
+        mHelpPosY = float(m_cameraY + event.mouseY) / m_cellSize;
         ++m_cellSize;
         if ( m_cellSize > MAX_CELL_SIZE )
             m_cellSize = MAX_CELL_SIZE;
-        m_cameraX = int(mHelpCameraX * m_cellSize);
-        m_cameraY = int(mHelpCameraY * m_cellSize);
+        m_cameraX = (int)round(mHelpPosX * m_cellSize - event.mouseX);
+        m_cameraY = (int)round(mHelpPosY * m_cellSize - event.mouseY);
         break;
     
     case ViewAction::WINDOW_SIZE_CHANGE:

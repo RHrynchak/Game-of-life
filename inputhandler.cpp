@@ -95,7 +95,7 @@ void InputHandler::handleMouseWheelEvent( SDL_MouseWheelEvent& e )
         event.action = ViewAction::CELL_SIZE_DECREASE;
     }
     event.mouseX = int(e.mouse_x);
-    event.mouseX = int(e.mouse_y); 
+    event.mouseY = int(e.mouse_y); 
     m_viewEvent = event;
 }
 
