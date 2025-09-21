@@ -1,5 +1,5 @@
 TODO List
-1) Make zoom depends on mouse position
+~~1) Make zoom depends on mouse position~~ Completed
 2) Rewrite GameEvent and ViewEvent with parent class Event
 3) Add statistics on screen
 4) Make controls more screen then keyboard oriented
