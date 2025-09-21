@@ -1,7 +1,6 @@
 #include "gamerenderer.h"
 
 const int GameRenderer::MIN_CELL_SIZE{ 5 };
-const int GameRenderer::MAX_CELL_SIZE{ 100 };
 const int GameRenderer::MIN_WINDOW_SIZE{ 100 };
 
 GameRenderer::GameRenderer( int windowWidth, int windowHeight, int m_cellSize ) : m_windowWidth( windowWidth ), m_windowHeight( windowHeight ), m_cellSize( m_cellSize )
@@ -12,6 +11,7 @@ GameRenderer::GameRenderer( int windowWidth, int windowHeight, int m_cellSize ) 
     if ( m_windowHeight < MIN_WINDOW_SIZE ){
         m_windowHeight = MIN_WINDOW_SIZE;
     }
+    MAX_CELL_SIZE = std::min( m_windowWidth, m_windowHeight ) / 2;
     if ( m_cellSize < MIN_CELL_SIZE )
     {
         m_cellSize = MIN_CELL_SIZE;
@@ -116,4 +116,6 @@ void GameRenderer::handleEvent( ViewEvent event )
         m_cameraX += event.velX * m_windowWidth / 50;
         m_cameraY += event.velY * m_windowHeight / 50;
     }
+
+    MAX_CELL_SIZE = std::min( m_windowWidth, m_windowHeight ) / 2;
 }

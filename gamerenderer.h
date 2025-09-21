@@ -17,7 +17,7 @@ public:
 
 private:
     static const int MIN_CELL_SIZE;
-    static const int MAX_CELL_SIZE;
+    int MAX_CELL_SIZE;
     static const int MIN_WINDOW_SIZE;
     
     SDL_Window* m_window;
